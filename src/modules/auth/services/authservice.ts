@@ -3,7 +3,7 @@ import AuthRequest from '../models/authrequest';
 
 import BaseService from "@/services/base/baseservice";
 
-class AuthService extends BaseService<AuthRequest, AuthResponse> {
+class AuthService extends BaseService<AuthRequest> {
 
     constructor (){
         super('login');

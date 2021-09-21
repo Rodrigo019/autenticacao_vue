@@ -1,18 +1,19 @@
 import http from '../httpclient'
+import Response from '@/models/requests/response'
 
-class BaseService<Request, Response> {
+class BaseService<Request> {
 
-    protected endpoint: string = '';
+    protected endpoint = '';
 
     constructor (endpoint: string) {
         this.endpoint = endpoint;
     }
 
-    async get(id: number) : Promise<Response> {
+    public async get(id: number) : Promise<Response<Request>> {
         return await http.get(`${this.endpoint}/${id}`);
     }
 
-    async post(request: Request) : Promise<Response> {
+    public async post(request: Request) : Promise<Response<Request>> {
         return await http.post(this.endpoint, request);
     }
 }
