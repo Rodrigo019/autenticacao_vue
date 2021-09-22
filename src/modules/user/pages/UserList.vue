@@ -12,8 +12,12 @@ import UserService from '../services/userservice'
 
 export default defineComponent({
     
-    created() {
-        console.log(UserService.get(1));
+    data(){
+        users: []
+    },
+    async created() {
+        const retorno = UserService.getPaged(1,10);
+        this.users = await (await retorno).retorno;
     }
 })
 </script>
