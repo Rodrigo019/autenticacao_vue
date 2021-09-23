@@ -9,16 +9,16 @@ class BaseService<Request> {
         this.endpoint = endpoint;
     }
 
-    public async get(id: number) : Promise<Response<Request>> {
-        return await http.get(`${this.endpoint}/${id}`);
+    public get(id: number) : Promise<Response<Request>> {
+        return http.get(`${this.endpoint}/${id}`);
     }
 
-    public async getPaged(initialPage: number = 1, quantity: number) : Promise<Response<any>> {
-        return await http.get(`${this.endpoint}Paged?PaginacaoInicio=${initialPage}&PaginacaoQuantidade=${quantity}`);
+    public getPaged(initialPage = 1, quantity: number) : Promise<Response<any>> {
+        return http.get(`${this.endpoint}Paged?PaginacaoInicio=${initialPage}&PaginacaoQuantidade=${quantity}`);
     }
 
-    public async post(request: Request) : Promise<Response<Request>> {
-        return await http.post(this.endpoint, request);
+    public post(request: Request) : Promise<Response<Request>> {
+        return http.post(this.endpoint, request);
     }
 }
 
