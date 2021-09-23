@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import UserService from '../services/userservice'
 
 export default defineComponent({
@@ -32,10 +32,12 @@ export default defineComponent({
             users: []
         }        
     },
+    props: {
+        id: Number
+    },
     async created() {
         const response = await UserService.getPaged(1,10) as any;
         this.users = response.data.retorno.value;
-        console.log(this.users)
     }
 })
 </script>
